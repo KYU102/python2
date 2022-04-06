@@ -27,9 +27,10 @@ class BankAccount:
 
 class User:
     def __init__(self,first_name,last_name, int_rate, balance):
+        self.first_name = first_name
         self.last_name = last_name
         self.account_balance = 0
-        self.account = BankAccount(first_name, last_name, int_rate, balance)
+        self.account = BankAccount(first_name, last_name, int_rate, balance) #this should match BankAccountin the init line of BankAccount
 
     def make_deposit(self, amount):
         self.account.deposit(amount)
