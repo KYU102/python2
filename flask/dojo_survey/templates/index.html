@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Dojo Survey</h1>
+    <form action="/users" method = "post" >
+        <label for="fname">Name:</label>
+        <input type="text" id="fname" name="fname">
+        
+
+    <div>
+        <label for="loc">Location:</label>
+        <select name="loc" id="loc">
+            <option value="seattle">seattle</option>
+            <option value="sanjose">san jose</option>
+            <option value="burbank">burbank</option>
+        </select>
+    </div>
+    <div>
+        <label for="lang">Favorite Language:</label>
+        <select name="lang" id="lang">
+            <option value="python">Python</option>
+            <option value="html">html</option>
+            <option value="css">css</option>
+            <option value="c">c++</option>
+        </select>
+    </div>
+    
+    <label for="coms">Comments:</label>
+    <textarea name="com" cols="20" rows="3"></textarea>
+    
+    <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
