@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='checkerboard.css') }}">
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    }
+    .main {
+        margin: auto;
+    }
+    .box1 {
+        width: 200px;
+        height: 200px;
+        background-color: {{color1}};
+    }
+    .box2 {
+        width: 200px;
+        height: 200px;
+        background-color: {{color2}};
+    }
+    .title {
+        text-align: center;
+        color: {{color1}};
+        background-color: {{color2}};
+        width: 300px;
+        margin: auto;
+        
+    }
+    </style>
+    <title>Checkerboard</title>
+</head>
+<body>
+    <div class="title">
+    <h1 >***Checkerboard***</h1>
+    </div>
+        <table class="main">
+            {% for x in range(col//2): %}
+            <tr>
+                {% for x in range(row//2): %}
+                <td class="box2"></td>
+                <td class="box1"></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                {% for x in range(row//2): %}
+                <td class="box1"></td>
+                <td class="box2"></td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+</body>
+</html>

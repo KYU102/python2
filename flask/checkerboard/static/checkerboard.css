@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+    }
+    .main {
+        margin: auto;
+    }
+    .box1 {
+        width: 200px;
+        height: 200px;
+        background-color: {{color1}};
+    }
+    .box2 {
+        width: 200px;
+        height: 200px;
+        background-color: {{color2}};
+    }
+    .title {
+        text-align: center;
+        color: {{color1}};
+        background-color: {{color2}};
+        width: 300px;
+        margin: auto;
+        
+    }
