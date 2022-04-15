@@ -17,7 +17,7 @@
             <h1>All Dojos</h1>
             {% for dojo in dojos: %}
             
-                <div><a href="">{{dojo.name}}</a></div>
+                <div><a href="/dojo_show/{{dojo.id}}">{{dojo.name}}</a></div>
                 {% endfor %}
                 <br><br>
                 <a href="/newninja"> Add Ninjas</a>

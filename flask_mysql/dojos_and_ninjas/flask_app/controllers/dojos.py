@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect
 from flask_app import app
-from flask_app.models.model import Dojo
+from flask_app.models.dojo import Dojo
 
 
 @app.route("/")
@@ -10,7 +10,9 @@ def allDojos():
 
 @app.route("/newninja")
 def newninjapg():
-    return render_template("new_ninja.html")
+    dojos = Dojo.get_all()
+    return render_template("new_ninja.html", dojos=dojos)
+
 
 @app.route('/create_dojo', methods=["POST"])
 def create_dojo():
@@ -23,3 +25,12 @@ def create_dojo():
     Dojo.saveDojo(data)
     # Don't forget to redirect after saving to the database.
     return redirect('/')
+
+
+
+@app.route("/dojo_show/<int:id>")
+def oneDojo(id):
+    data ={ 
+        "id":id
+    }
+    return render_template("dojo_show.html",dojo=Dojo.getNinjas(data))
