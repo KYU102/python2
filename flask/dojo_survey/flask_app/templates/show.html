@@ -9,13 +9,13 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>User Info</h1>
+    <h1>User Info </h1>
     <div class="card" style="width: 18rem;">
         <ul class="list-group list-group-flush">
-        <li class="list-group-item">Name: {{session["fname"]}}</li>
-        <li class="list-group-item">Dojo Location: {{session['loc']}}</li>
-        <li class="list-group-item">Favorite Language: {{session['lang']}}</li>
-        <li class="list-group-item">Comment: {{session['com']}}</li>
+        <li class="list-group-item">Name: {{ survey.name}}</li>
+        <li class="list-group-item">Dojo Location: {{survey.location}}</li>
+        <li class="list-group-item">Favorite Language: {{survey.language}}</li>
+        <li class="list-group-item">Comment: {{survey.comment}}</li>
         </ul>
     </div>
 </body>
