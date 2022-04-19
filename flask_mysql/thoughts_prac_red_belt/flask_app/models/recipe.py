@@ -38,7 +38,7 @@ class Recipe:
 
     @classmethod
     def update(cls,data):
-        query = "UPDATE recipes SET name=%(name)s,description=%(description)s,instructions=%(instructions)s,date_made=%(date_made)s,under30=%(under30)s WHERE id = %(id)s;"
+        query = "UPDATE recipes SET name=%(name)s,description=%(description)s,instructions=%(instructions)s,date_made=%(date_made)s WHERE id = %(id)s;"
 
         return connectToMySQL(DATABASE).query_db(query,data)
 
@@ -61,7 +61,7 @@ class Recipe:
         if len(recipe['instructions']) < 3:
             is_valid = False
             flash("Instructions must be at least 3 characters.")
-        if not recipe['date_made']:
+        if recipe['date_made'] == False:
             is_valid = False
             flash("Date made required")
         return is_valid

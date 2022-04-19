@@ -8,6 +8,8 @@
 </head>
 <body>
     <h1>Add New Recipe</h1>
+    <a href="/logout">Logout</a>
+    <a href="/recipe_list"> Dashboard</a>
     <form action="/create_recipe" method = "post" >
         <div>
             <label for="name">Name:</label>
@@ -23,11 +25,11 @@
         </div>
         <div>
             <label for="date_made" >Date Made On:</label> 
-            <input type="date" name="date_made">
+            <input type="date" name="date_made" >
             
         <div>
             <label for="under30">Under 30 Minutes?</label>
-            <input type="radio" name="under30" value="yes" checked>Yes</input>
+            <input type="radio" name="under30" value="Yes" checked>Yes</input>
             <input type="radio" name="under30" value="No">No</input>
             </div>
         </div>
