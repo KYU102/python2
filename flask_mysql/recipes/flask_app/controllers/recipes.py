@@ -5,6 +5,8 @@ from flask_app.models.recipe import Recipe
 
 @app.route('/new')
 def index1():
+    if 'user_id' not in session:
+        return redirect('/logout')
     return render_template("new_recipe.html")
 
 # @app.route("/recipe_list")
@@ -35,7 +37,9 @@ def create_recipe():
 
 @app.route("/one_recipe/<int:id>")
 def oneRecipe(id):
-    data ={ 
+    if 'user_id' not in session:
+        return redirect('/logout')
+    data ={
         "id":id
     }
     return render_template("one_recipe.html",recipe=Recipe.get_one_recipe(data))
@@ -43,6 +47,8 @@ def oneRecipe(id):
 
 @app.route("/edit/<int:id>")
 def edit(id):
+    if 'user_id' not in session:
+        return redirect('/logout')
     data ={
         "id" : id
     }
