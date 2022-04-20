@@ -1,7 +1,7 @@
 from flask import render_template,request, redirect, session, flash
 from flask_app import app
 from flask_app.models.user import User
-from flask_app.models.recipe import Recipe
+from flask_app.models.thought import Thought
 from flask_bcrypt import Bcrypt
 
 @app.route('/')
@@ -9,15 +9,15 @@ def index():
     return render_template("user_create.html")
 
 
-@app.route('/recipe_list')
+@app.route('/thought_list')
 def dashboard():
     if 'user_id' not in session:
         return redirect('/logout')
     data ={
         'id': session['user_id']
     }
-    recipes = Recipe.get_all_recipes()
-    return render_template("recipe_list.html",user=User.get_by_id(data), recipes=recipes)
+    thoughts = Thought.get_all_thoughts()
+    return render_template("thought_list.html",user=User.get_by_id(data), thoughts=thoughts)
 
 
 bcrypt = Bcrypt(app)
@@ -39,7 +39,7 @@ def create_users():
         return redirect('/')
     session['user_id'] = id
     session['first_name'] = request.form['first_name']
-    return redirect('/recipe_list')
+    return redirect('/thought_list')
 
 bcrypt = Bcrypt(app)
 @app.route('/login',methods=['POST'])
@@ -54,7 +54,7 @@ def login():
         return redirect('/')
     session['user_id'] = user.id
     session['first_name'] = user.first_name
-    return redirect('/recipe_list')
+    return redirect('/thought_list')
 
 
 @app.route('/logout')

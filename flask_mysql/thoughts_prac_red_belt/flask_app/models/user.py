@@ -5,7 +5,7 @@ import re	# the regex module
 # create a regular expression object that we'll use later  
 USER_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$') 
 
-DATABASE = 'recipes_schema'
+DATABASE = 'thoughts_schema'
 
 class User:
     def __init__(self,data):
@@ -49,7 +49,7 @@ class User:
         if not USER_REGEX.match(user['email']): 
             flash("Invalid user address!")
             is_valid = False
-        if len(user['password']) < 8:
+        if len(user['password']) < 3: 
             is_valid = False
             flash("Password must be at least 8 characters.")
         if user['password'] != user['confirm']:

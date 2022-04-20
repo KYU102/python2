@@ -12,8 +12,8 @@
     <a href="/logout">Logout</a>
     <h2>{{recipe.name}}</h2>
     <p>Description: {{recipe.description}}</p>
-    <p>Instruictions: {{recipe.instructions}}</p>
-    <p>Date Made: {{recipe.date_made}}</p>
+    <p>Instructions: {{recipe.instructions}}</p>
+    <p>Date Made: {{recipe.date_made.strftime("%b %d %Y") }}</p>
 
     <a href="/edit/{{recipe.id}}"> Edit</a> | <a href="/delete/{{recipe.id}}"> Delete</a>
     
