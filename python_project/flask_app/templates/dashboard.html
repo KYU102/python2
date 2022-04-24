@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <body>
+        <h1>Add New Desk</h1>
+        <a href="/logout">Logout</a>
+        <a href="/dashboard"> Dashboard</a>
+        <form action="/create_desk" method = "post" >
+            <div>
+                <label for="title">title:</label>
+                <input type="text" id="title" name="title">
+            </div>
+            <div>
+                <label for="description">Description:</label>
+                <input type="text" id="description" name="description">
+            </div>
+            <div>
+                <input type="file" name="uploadfile" value=""/>
+            </div>
+        <input type="submit" value="Create">
+        </form>
+
+        <form action="/create_desk" method = "post" >
+            <div>
+                <label for="item">item:</label>
+                <input type="text" id="item" name="item">
+            </div>
+            <div>
+                <label for="link">Link:</label>
+                <input type="text" id="link" name="link">
+            </div>
+            <div>
+                <label for="price">Price:</label>
+                <input type="text" id="price" name="price">
+            </div>
+        <input type="submit" value="Create">
+        </form>
+
+
+        {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+        {% if messages %}                            <!-- check if there are any messages -->
+            {% for message in messages %}            <!-- loop through the messages -->
+                <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    
+</body>
+</html>
