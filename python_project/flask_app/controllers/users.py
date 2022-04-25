@@ -8,6 +8,10 @@ from flask_bcrypt import Bcrypt
 def index():
     return render_template("login.html")
 
+@app.route('/register')
+def registration():
+    return render_template("registration.html")
+
 
 
 @app.route('/dashboard')
@@ -17,9 +21,9 @@ def dashboard():
     data ={
         'id': session['user_id']
     }
-    magazines = Magazine.get_all_with_user()
-    return render_template("dashboard.html",user=User.get_by_all(data), magazines=magazines)
-
+    # magazines = Magazine.get_all_with_user()
+    return render_template("dashboard.html",user=User.get_by_all(data))
+# , magazines=magazines
     
 
 
@@ -30,7 +34,7 @@ def create_users():
     valid = User.is_valid(request.form)
 
     if not valid:
-        return redirect("/")
+        return redirect("/register")
     new_user = {
         "first_name": request.form["first_name"],
         "last_name": request.form["last_name"],

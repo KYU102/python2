@@ -70,9 +70,9 @@ class User:
         if len(user['first_name']) < 3:
             is_valid = False
             flash("First name must be at least 3 characters.")
-        if len(user['last_name']) < 3:
+        if len(user['last_name']) < 2:
             is_valid = False
-            flash("Last name must be at least 3 characters.")
+            flash("Last name must be at least 2 characters.")
         if not USER_REGEX.match(user['email']): 
             flash("Invalid user address!")
             is_valid = False
