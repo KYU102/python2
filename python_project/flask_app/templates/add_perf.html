@@ -8,5 +8,31 @@
 </head>
 <body>
     <h1>Add Periphers to this {{desk}}</h1>
+
+    <form action="/create_perf" method = "post" >
+        <div>
+            <label for="name">Item:</label>
+            <input type="text" id="name" name="name">
+        </div>
+        <div>
+            <label for="link">Link:</label>
+            <input type="text" id="link" name="link">
+        </div>
+        <div>
+            <label for="price">Price:</label>
+            <input type="text" id="price" name="price">
+        </div>
+        <div>      
+            <label for="theme">Theme</label>
+            <select name="theme" id="theme">
+                <option value="dark">Dark</option>
+                <option value="light">Light</option>
+                <option value="sterile">Sterile</option>
+                <option value="gaming">Gaming</option>
+                <option value="allOther">All Other</option>
+            </select>
+        </div>
+    <input type="submit" value="Create">
+    </form>
 </body>
 </html>

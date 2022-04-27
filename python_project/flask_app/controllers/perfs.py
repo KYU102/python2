@@ -2,6 +2,7 @@ from flask import render_template,request, redirect, session, flash
 from flask_app import app
 from flask_app.models.desk import Desk
 from flask_app.models.user import User
+from flask_app.models.perf import Peripheral
 
 @app.route('/new/perf')
 def newPerf():
@@ -20,7 +21,7 @@ def create_perf():
     data = {
         'name': request.form['name'],
         'link': request.form['link'],
-        'price':request.form['price'],
+        'price': request.form['price'],
         'theme': request.form['theme']
     }
     # We pass the data dictionary into the save method from the Friend class.

@@ -2,6 +2,7 @@ from flask import render_template,request, redirect, session, flash
 from flask_app import app
 from flask_app.models.desk import Desk
 from flask_app.models.user import User
+from flask_app.models.perf import Peripheral
 
 
 @app.route('/new')
@@ -31,7 +32,7 @@ def create_desk():
     # We pass the data dictionary into the save method from the Friend class.
     Desk.saveDesk(data)
     # Don't forget to redirect after saving to the database.
-    return redirect('/dashboard')
+    return redirect('/new/perf')
 
 @app.route("/show/<int:id>")
 def oneDesk(id):
