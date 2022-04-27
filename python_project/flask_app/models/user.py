@@ -88,8 +88,6 @@ class User:
                 'id': desk['desks.id'],
                 'title': desk['title'],
                 'description': desk['description'],
-                'created_at': desk['desks.created_at'],
-                'updated_at': desk['desks.updated_at'],
                 'user_id': desk['user_id'],
                 'first_name' : desk['first_name']
                 }
