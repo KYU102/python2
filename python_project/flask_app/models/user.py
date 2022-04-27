@@ -1,6 +1,6 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
-# from flask_app.models.magazine import Magazine
+from flask_app.models.desk import Desk
 
 import re	# the regex module
 # create a regular expression object that we'll use later  
@@ -15,7 +15,7 @@ class User:
         self.last_name = data['last_name']
         self.email = data['email']
         self.password = data['password']
-        self.magazines = []
+        self.desks = []
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
 
@@ -80,33 +80,33 @@ class User:
 
     @classmethod
     def getUsers(cls, data):
-        query = "SELECT * FROM users LEFT JOIN magazines ON magazines.user_id = users.id WHERE users.id=%(id)s;"
+        query = "SELECT * FROM users LEFT JOIN desks ON desks.user_id = users.id WHERE users.id=%(id)s;"
         result = connectToMySQL(DATABASE).query_db(query,data)
         dojo = cls(result[0])
-        for magazine in result:
-            magazine_data = {
-                'id': magazine['magazines.id'],
-                'title': magazine['title'],
-                'description': magazine['description'],
-                'created_at': magazine['magazines.created_at'],
-                'updated_at': magazine['magazines.updated_at'],
-                'user_id': magazine['user_id'],
-                'first_name' : magazine['first_name']
+        for desk in result:
+            desk_data = {
+                'id': desk['desks.id'],
+                'title': desk['title'],
+                'description': desk['description'],
+                'created_at': desk['desks.created_at'],
+                'updated_at': desk['desks.updated_at'],
+                'user_id': desk['user_id'],
+                'first_name' : desk['first_name']
                 }
-            dojo.magazines.append(Magazine(magazine_data))
+            dojo.desks.append(Desk(desk_data))
             
         return dojo
 
             # ! READ/RETRIEVE ALL
     @classmethod
     def get_all_with_user(cls) -> list:
-        query = "SELECT users.first_name, magazines.* FROM magazines JOIN users ON users.id = magazines.user_id;"
+        query = "SELECT users.first_name, desks.* FROM desks JOIN users ON users.id = desks.user_id;"
         results = connectToMySQL(DATABASE).query_db(query)
         # results will be a list of dictionaries
-        magazines = []
+        desks = []
         for dictionary in results:
             # dictionary is a dictionary in the list
-            magazines.append( cls(dictionary) )
+            desks.append( cls(dictionary) )
             # adding an instance of the thought class to the thoughts list
-        return magazines
+        return desks
 

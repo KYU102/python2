@@ -1,7 +1,7 @@
 from flask import render_template,request, redirect, session, flash
 from flask_app import app
 from flask_app.models.user import User
-# from flask_app.models.magazine import Magazine
+from flask_app.models.desk import Desk
 from flask_bcrypt import Bcrypt
 
 @app.route('/')
@@ -21,9 +21,9 @@ def dashboard():
     data ={
         'id': session['user_id']
     }
-    # magazines = Magazine.get_all_with_user()
+    # desks = Desk.get_all_with_user()
     return render_template("dashboard.html",user=User.get_by_all(data))
-# , magazines=magazines
+# , desks=desks
     
 
 
