@@ -18,6 +18,8 @@ class Peripheral:
             self.title = data['title']
 
 
+
+
     @classmethod
     def savePerf(cls,data):
         query = "INSERT INTO peripherals (name, link, price, theme) VALUES (%(name)s,%(link)s,%(price)s,%(theme)s);"
