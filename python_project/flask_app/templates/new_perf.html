@@ -7,7 +7,7 @@
     <title>Add Peripherals</title>
 </head>
 <body>
-    <h1>Add Periphers to this {{desk}}</h1>
+    <h1>Add Periphers to this {{session['desk_id']}}</h1>
 
     <form action="/create_perf" method = "post" >
         <div>
@@ -32,7 +32,7 @@
                 <option value="allOther">All Other</option>
             </select>
         </div>
-    <input type="submit" value="Create">
+    <input type="submit" value="Add">
     </form>
 </body>
 </html>

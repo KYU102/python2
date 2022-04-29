@@ -13,14 +13,11 @@ class Peripheral:
         self.theme = data['theme']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
-        self.desk_id = data['desk_id']
-        if 'title' in data:
-            self.title = data['title']
-
+        self.desk_id = session['desk_id']
 
 
 
     @classmethod
     def savePerf(cls,data):
-        query = "INSERT INTO peripherals (name, link, price, theme) VALUES (%(name)s,%(link)s,%(price)s,%(theme)s);"
+        query = "INSERT INTO peripherals (name, link, price, theme, desk_id) VALUES (%(name)s,%(link)s,%(price)s,%(theme)s,%(desk_id)s);"
         return connectToMySQL(DATABASE).query_db(query,data)

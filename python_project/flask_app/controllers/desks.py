@@ -30,9 +30,11 @@ def create_desk():
         'user_id':session['user_id']
     }
     # We pass the data dictionary into the save method from the Friend class.
-    Desk.saveDesk(data)
+    id = Desk.saveDesk(data)
+    session['desk_id'] = id
     # Don't forget to redirect after saving to the database.
     return redirect('/new/perf')
+
 
 @app.route("/show/<int:id>")
 def oneDesk(id):

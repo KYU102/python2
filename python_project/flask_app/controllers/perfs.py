@@ -22,9 +22,10 @@ def create_perf():
         'name': request.form['name'],
         'link': request.form['link'],
         'price': request.form['price'],
-        'theme': request.form['theme']
+        'theme': request.form['theme'],
+        'desk_id': session['desk_id']
     }
     # We pass the data dictionary into the save method from the Friend class.
     Peripheral.savePerf(data)
     # Don't forget to redirect after saving to the database.
-    return redirect('/dashboard')
+    return redirect('/new/perf')
