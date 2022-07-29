@@ -10,11 +10,11 @@ def index12():
         return redirect('/logout')
     return render_template("new_form.html")
 
-# @app.route("/dashboard")
-# def allForms():
-#     print("test")
-#     forms = Form.get_all_forms()
-#     return render_template("form_list.html", forms=forms)
+@app.route("/dashboard")
+def allForms():
+    print("test")
+    forms = Form.get_all_forms()
+    return render_template("form_list.html", forms=forms)
 
 @app.route('/create_form', methods=["POST"])
 def create_form():

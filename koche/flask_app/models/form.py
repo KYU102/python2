@@ -20,17 +20,17 @@ class Form:
         query = "INSERT INTO forms (close_contact, exposure_date,employee_id) VALUES (%(close_contact)s,%(exposure_date)s,%(employee_id)s);"
         return connectToMySQL(DATABASE).query_db(query,data)
 
-    # @classmethod
-    # def get_all_forms(cls):
-    #     query = "SELECT * FROM forms;"
-    #     results = connectToMySQL(DATABASE).query_db(query)
-    #     forms = []
-    #     for form in results:
-    #         forms.append( cls(form) )
-    #     return forms
+    @classmethod
+    def get_all_forms(cls):
+        query = "SELECT * FROM forms;"
+        results = connectToMySQL(DATABASE).query_db(query)
+        forms = []
+        for form in results:
+            forms.append( cls(form) )
+        return forms
 
     # @classmethod
-    # def get_one_form_with_user(cls,data):
+    # def get_one_form_with_employee(cls,data):
     #     query  = "SELECT * FROM forms WHERE id = %(id)s";
     #     result = connectToMySQL(DATABASE).query_db(query,data)
     #     return cls(result[0])
@@ -67,15 +67,15 @@ class Form:
 
 
             # ! READ/RETRIEVE ALL
-    # @classmethod
-    # def get_all_with_user(cls) -> list:
-    #     query = "SELECT users.first_name, forms.* FROM forms JOIN users ON users.id = forms.user_id;"
-    #     results = connectToMySQL(DATABASE).query_db(query)
-    #     # results will be a list of dictionaries
-    #     forms = []
-    #     for dictionary in results:
-    #         # dictionary is a dictionary in the list
-    #         forms.append( cls(dictionary) )
-    #         # adding an instance of the thought class to the thoughts list
-    #     return forms
+    @classmethod
+    def get_all_with_employee(cls) -> list:
+        query = "SELECT employees.first_name, forms.* FROM forms JOIN employees ON employees.id = forms.employees_id;"
+        results = connectToMySQL(DATABASE).query_db(query)
+        # results will be a list of dictionaries
+        forms = []
+        for dictionary in results:
+            # dictionary is a dictionary in the list
+            forms.append( cls(dictionary) )
+            # adding an instance of the thought class to the thoughts list
+        return forms
 

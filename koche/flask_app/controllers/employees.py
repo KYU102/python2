@@ -10,15 +10,15 @@ def index():
 
 
 
-# @app.route('/dashboard')
-# def dashboard():
-#     if 'employee_id' not in session:
-#         return redirect('/logout')
-#     data ={
-#         'id': session['employee_id']
-#     }
-#     forms = Form.get_all_with_employee()
-#     return render_template("dashboard.html",employee=Employee.get_by_all(data), forms=forms)
+@app.route('/dashboard')
+def dashboard():
+    if 'employee_id' not in session:
+        return redirect('/logout')
+    data ={
+        'id': session['employee_id']
+    }
+    forms = Form.get_all_with_employee()
+    return render_template("dashboard.html",employee=Employee.get_by_all(data), forms=forms)
 
     
 
@@ -45,20 +45,20 @@ def create_employees():
     session['first_name'] = request.form['first_name']
     return redirect('/dashboard')
 
-# bcrypt = Bcrypt(app)
-# @app.route('/login',methods=['POST'])
-# def login():
-#     employee = Employee.get_by_email(request.form)
+bcrypt = Bcrypt(app)
+@app.route('/login',methods=['POST'])
+def login():
+    employee = Employee.get_by_email(request.form)
 
-#     if not employee:
-#         flash("Invalid Email","login")
-#         return redirect('/')
-#     if not bcrypt.check_password_hash(employee.password, request.form['password']):
-#         flash("Invalid Password","login")
-#         return redirect('/')
-#     session['employee_id'] = employee.id
-#     session['first_name'] = employee.first_name
-#     return redirect('/dashboard')
+    if not employee:
+        flash("Invalid Email","login")
+        return redirect('/')
+    if not bcrypt.check_password_hash(employee.password, request.form['password']):
+        flash("Invalid Password","login")
+        return redirect('/')
+    session['employee_id'] = employee.id
+    session['first_name'] = employee.first_name
+    return redirect('/dashboard')
 
 
 @app.route('/logout')

@@ -24,20 +24,20 @@ class Employee:
         query = "INSERT INTO employees (first_name, last_name, email, password) VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s);"
         return connectToMySQL(DATABASE).query_db(query,data)
 
-    # @classmethod
-    # def get_by_email(cls,data):
-    #     query = "SELECT * FROM employees WHERE email = %(email)s;"
-    #     result = connectToMySQL(DATABASE).query_db(query,data)
-    #     # Didn't find a matching employee
-    #     if len(result) < 1:
-    #         return False
-    #     return cls(result[0])
+    @classmethod
+    def get_by_email(cls,data):
+        query = "SELECT * FROM employees WHERE email = %(email)s;"
+        result = connectToMySQL(DATABASE).query_db(query,data)
+        # Didn't find a matching employee
+        if len(result) < 1:
+            return False
+        return cls(result[0])
 
-    # @classmethod
-    # def get_by_all(cls,data):
-    #     query = "SELECT * FROM employees"
-    #     results = connectToMySQL(DATABASE).query_db(query,data)
-    #     return cls(results[0])
+    @classmethod
+    def get_by_all(cls,data):
+        query = "SELECT * FROM employees"
+        results = connectToMySQL(DATABASE).query_db(query,data)
+        return cls(results[0])
 
     # @classmethod
     # def update(cls,data):
@@ -78,35 +78,35 @@ class Employee:
             is_valid = False
         return is_valid
 
-    # @classmethod
-    # def getEmployees(cls, data):
-    #     query = "SELECT * FROM employees LEFT JOIN forms ON forms.employee_id = employees.id WHERE employees.id=%(id)s;"
-    #     result = connectToMySQL(DATABASE).query_db(query,data)
-    #     dojo = cls(result[0])
-    #     for form in result:
-    #         form_data = {
-    #             'id': form['forms.id'],
-    #             'title': form['title'],
-    #             'description': form['description'],
-    #             'created_at': form['forms.created_at'],
-    #             'updated_at': form['forms.updated_at'],
-    #             'employee_id': form['employee_id'],
-    #             'first_name' : form['first_name']
-    #             }
-    #         dojo.forms.append(Form(form_data))
+    @classmethod
+    def getEmployees(cls, data):
+        query = "SELECT * FROM employees LEFT JOIN forms ON forms.employee_id = employees.id WHERE employees.id=%(id)s;"
+        result = connectToMySQL(DATABASE).query_db(query,data)
+        dojo = cls(result[0])
+        for form in result:
+            form_data = {
+                'id': form['forms.id'],
+                'close_contact': form['close_contact'],
+                'exposure_date': form['exposure_date'],
+                'created_at': form['forms.created_at'],
+                'updated_at': form['forms.updated_at'],
+                'employee_id': form['employee_id'],
+                'first_name' : form['first_name']
+                }
+            dojo.forms.append(Form(form_data))
             
-    #     return dojo
+        return dojo
 
     #         # ! READ/RETRIEVE ALL
-    # @classmethod
-    # def get_all_with_employee(cls) -> list:
-    #     query = "SELECT employees.first_name, forms.* FROM forms JOIN employees ON employees.id = forms.employee_id;"
-    #     results = connectToMySQL(DATABASE).query_db(query)
-    #     # results will be a list of dictionaries
-    #     forms = []
-    #     for dictionary in results:
-    #         # dictionary is a dictionary in the list
-    #         forms.append( cls(dictionary) )
-    #         # adding an instance of the thought class to the thoughts list
-    #     return forms
+    @classmethod
+    def get_all_with_employee(cls) -> list:
+        query = "SELECT employees.first_name, forms.* FROM forms JOIN employees ON employees.id = forms.employee_id;"
+        results = connectToMySQL(DATABASE).query_db(query)
+        # results will be a list of dictionaries
+        forms = []
+        for dictionary in results:
+            # dictionary is a dictionary in the list
+            forms.append( cls(dictionary) )
+            # adding an instance of the thought class to the thoughts list
+        return forms
 
