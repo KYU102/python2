@@ -41,7 +41,7 @@ def create_employees():
     if not id:
         flash("Email already taken.","register")
         return redirect('/')
-    session['employee_id'] = id
+    session['employee_id'] = request.form['employee_id']
     session['first_name'] = request.form['first_name']
     return redirect('/dashboard')
 
