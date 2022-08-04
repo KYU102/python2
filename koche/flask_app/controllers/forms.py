@@ -20,13 +20,13 @@ def allForms():
 def create_form():
     # First we make a data dictionary from our request.form coming from our template.
     # The keys in data need to line up exactly with the variables in our query string.
-    rValid = Form.form_is_valid(request.form)
-    if not rValid:
-        return redirect("/new")
+    # rValid = Form.form_is_valid(request.form)
+    # if not rValid:
+    #     return redirect("/new")
     data = {
-        'title': request.form['title'],
-        'description': request.form['description'],
-        'employee_id':session['employee_id']
+        'close_contact': request.form['close_contact'],
+        'exposure_date': request.form['exposure_date']
+        # 'employee_id':session['employee_id']
     }
     # We pass the data dictionary into the save method from the Friend class.
     Form.saveForm(data)
