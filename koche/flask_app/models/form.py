@@ -8,7 +8,6 @@ class Form:
         self.id = data['id']
         self.close_contact = data['close_contact']
         self.exposure_date = data['exposure_date']
-        self.employee_id = data['employee_id']
         if 'first_name' in data:
             self.first_name = data['first_name']
         self.created_at = data['created_at']
@@ -17,7 +16,7 @@ class Form:
 
     @classmethod
     def saveForm(cls,data):
-        query = "INSERT INTO forms (close_contact, exposure_date,employee_id) VALUES (%(close_contact)s,%(exposure_date)s,%(employee_id)s);"
+        query = "INSERT INTO forms (close_contact, exposure_date) VALUES (%(close_contact)s,%(exposure_date)s);"
         return connectToMySQL(DATABASE).query_db(query,data)
 
     @classmethod
@@ -57,10 +56,10 @@ class Form:
     # @staticmethod
     # def form_is_valid(form):
     #     is_valid = True
-    #     if len(form['title']) < 3:
+    #     if len(form['exposure_date']) < 3:
     #         is_valid = False
     #         flash("Title must be at least 3 characters.")
-    #     if len(form['description']) < 3:
+    #     if len(form['close_contact']) < 2:
     #         is_valid = False
     #         flash("Description must be at least 3 characters.")
     #     return is_valid
@@ -69,7 +68,7 @@ class Form:
             # ! READ/RETRIEVE ALL
     @classmethod
     def get_all_with_employee(cls) -> list:
-        query = "SELECT employees.first_name, forms.* FROM forms JOIN employees ON employees.id = forms.employees_id;"
+        query = "SELECT employees.first_name, forms.* FROM forms JOIN employees ON forms.id = employees.form_id;"
         results = connectToMySQL(DATABASE).query_db(query)
         # results will be a list of dictionaries
         forms = []
