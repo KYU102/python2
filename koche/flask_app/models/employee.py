@@ -100,7 +100,7 @@ class Employee:
     #         # ! READ/RETRIEVE ALL
     @classmethod
     def get_all_with_employee(cls) -> list:
-        query = "SELECT employees.first_name, forms.* FROM forms JOIN employees ON employees.froms_id = forms.id;"
+        query = "SELECT employees.first_name, forms.* FROM forms JOIN employees ON employees.forms_id = forms.id;"
         results = connectToMySQL(DATABASE).query_db(query)
         # results will be a list of dictionaries
         forms = []
