@@ -9,21 +9,6 @@ def index():
     return render_template("employee_create.html")
 
 
-
-@app.route('/dashboard')
-def dashboard():
-    if 'employee_id' not in session:
-        return redirect('/logout')
-    data ={
-        'id': session['employee_id']
-    }
-    # forms = Form.get_all_with_employee()
-    return render_template("dashboard.html",employee=Employee.get_by_all(data))
-
-    
-
-
-
 bcrypt = Bcrypt(app)
 @app.route('/create', methods=['POST'])
 def create_employees():
@@ -41,7 +26,7 @@ def create_employees():
     if not id:
         flash("Email already taken.","register")
         return redirect('/')
-    session['employee_id'] = request.form['employee_id']
+    session['employee_id'] = id
     session['first_name'] = request.form['first_name']
     return redirect('/dashboard')
 

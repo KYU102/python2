@@ -12,5 +12,17 @@
     <a href="/edit/{{employee.id}}">Account</a>
     <a href="/logout">Logout</a>
 
+    <table>
+        <tr>
+            <tr>
+                <th><h2>Forms</h2></th>
+            </tr>
+        </tr>
+        {% for form in forms: %}
+        <tr>
+            <td><a href="/show/{{form.id}}">{{form.exposure_date}}</a> manager: </td>
+        </tr>
+        {% endfor %}
+    </table>
 </body>
 </html>

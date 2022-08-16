@@ -10,11 +10,6 @@ def index12():
         return redirect('/logout')
     return render_template("new_form.html")
 
-# @app.route("/dashboard")
-# def allForms():
-#     forms = Form.get_all_forms()
-#     return render_template("form_list.html", forms=forms)
-
 @app.route('/create_form', methods=["POST"])
 def create_form():
     # First we make a data dictionary from our request.form coming from our template.
@@ -31,3 +26,15 @@ def create_form():
     Form.saveForm(data)
     # Don't forget to redirect after saving to the database.
     return redirect('/dashboard')
+
+
+@app.route('/dashboard')
+def dashboard():
+    if 'employee_id' not in session:
+        return redirect('/logout')
+    data ={
+        'id': session['employee_id']
+    }
+    # forms = Form.get_all_with_employee()
+    return render_template("dashboard.html",employee=Employee.get_by_all(data))
+
