@@ -9,7 +9,7 @@
 <body>
     <h1>Welcome {{session['employee_id']}}</h1>
     <a href="/new">Add Form</a>
-    <a href="/edit/{{employee.id}}">Account</a>
+
     <a href="/logout">Logout</a>
 
     <table>
@@ -20,7 +20,7 @@
         </tr>
         {% for form in forms: %}
         <tr>
-            <td><a href="/show/{{form.id}}">{{form.exposure_date}}</a> manager: </td>
+            <td><a href="/show/{{form.id}}">{{form.id}}</a> {{form.exposure_date}} {{form.first_name}}</td>
         </tr>
         {% endfor %}
     </table>

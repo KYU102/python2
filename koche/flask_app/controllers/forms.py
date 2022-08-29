@@ -35,6 +35,6 @@ def dashboard():
     data ={
         'id': session['employee_id']
     }
-    # forms = Form.get_all_with_employee()
-    return render_template("dashboard.html",employee=Employee.get_by_all(data))
+    forms = Form.get_all()
+    return render_template("dashboard.html",forms=forms)
 

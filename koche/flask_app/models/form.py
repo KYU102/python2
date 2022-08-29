@@ -39,20 +39,14 @@ class Form:
         return cls(results[0])
 
     @classmethod
-    def getEmployees(cls, data):
-        query = "SELECT * FROM employees LEFT JOIN forms ON forms.employee_id = employees.id WHERE employees.id=%(id)s;"
-        result = connectToMySQL(DATABASE).query_db(query,data)
-        dojo = cls(result[0])
-        for form in result:
-            form_data = {
-                'id': form['forms.id'],
-                'close_contact': form['close_contact'],
-                'exposure_date': form['exposure_date'],
-                'created_at': form['forms.created_at'],
-                'updated_at': form['forms.updated_at'],
-                'employee_id': form['employee_id'],
-                'first_name' : form['first_name']
-                }
-            dojo.forms.append(Form(form_data))
-            
-        return dojo
+    def get_all(cls) -> list:
+        # query = "SELECT * FROM forms JOIN employees ON emplopyees.id = forms.employee_id;"
+        query = "SELECT * FROM forms;"
+        results = connectToMySQL(DATABASE).query_db(query)
+        # results will be a list of dictionaries
+        forms = []
+        for dictionary in results:
+            # dictionary is a dictionary in the list
+            forms.append( cls(dictionary) )
+            # adding an instance of the thought class to the thoughts list
+        return forms
