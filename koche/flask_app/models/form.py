@@ -50,4 +50,10 @@ class Form:
             forms.append( cls(dictionary) )
             # adding an instance of the thought class to the thoughts list
         return forms
+    
+    @classmethod
+    def get_one_form(cls,data):
+        query  = "SELECT * FROM forms WHERE id = %(id)s";
+        result = connectToMySQL(DATABASE).query_db(query,data)
+        return cls(result[0])
 

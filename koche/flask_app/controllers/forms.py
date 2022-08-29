@@ -38,3 +38,12 @@ def dashboard():
     forms = Form.get_all_forms_for_emp(data)
     return render_template("dashboard.html",forms=forms)
 
+@app.route("/show/<int:id>")
+def oneForm(id):
+    if 'employee_id' not in session:
+        return redirect('/logout')
+    data ={
+        "id":id
+    }
+    return render_template("show.html", form=Form.get_one_form(data))
+    # , user=User.get_by_id(data)
