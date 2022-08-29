@@ -39,10 +39,10 @@ class Form:
         return cls(results[0])
 
     @classmethod
-    def get_all(cls) -> list:
+    def get_all_forms_for_emp(cls,data) -> list:
         # query = "SELECT * FROM forms JOIN employees ON emplopyees.id = forms.employee_id;"
-        query = "SELECT * FROM forms;"
-        results = connectToMySQL(DATABASE).query_db(query)
+        query = "SELECT * FROM forms WHERE forms.employee_id=%(id)s;"
+        results = connectToMySQL(DATABASE).query_db(query,data)
         # results will be a list of dictionaries
         forms = []
         for dictionary in results:
@@ -50,3 +50,4 @@ class Form:
             forms.append( cls(dictionary) )
             # adding an instance of the thought class to the thoughts list
         return forms
+
