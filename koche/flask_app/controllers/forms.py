@@ -14,9 +14,9 @@ def index12():
 def create_form():
     # First we make a data dictionary from our request.form coming from our template.
     # The keys in data need to line up exactly with the variables in our query string.
-    # rValid = Form.form_is_valid(request.form)
-    # if not rValid:
-    #     return redirect("/new")
+    rValid = Form.form_is_valid(request.form)
+    if not rValid:
+        return redirect("/new")
     data = {
         'close_contact': request.form['close_contact'],
         'exposure_date': request.form['exposure_date'],

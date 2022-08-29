@@ -57,3 +57,14 @@ class Form:
         result = connectToMySQL(DATABASE).query_db(query,data)
         return cls(result[0])
 
+
+    @staticmethod 
+    def form_is_valid(form):
+        is_valid=True
+        if not form['exposure_date']:
+            is_valid=False
+            flash("PLease put down date")
+        if not form['close_contact']:
+            is_valid=False
+            flash("please answer")
+        return is_valid
