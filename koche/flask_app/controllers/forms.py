@@ -8,7 +8,8 @@ from flask_app.models.employee import Employee
 def index12():
     if 'employee_id' not in session:
         return redirect('/logout')
-    return render_template("new_form.html")
+    employees = Employee.get_all_emp()
+    return render_template("new_form.html",employees=employees)
 
 @app.route('/create_form', methods=["POST"])
 def create_form():
@@ -36,6 +37,7 @@ def dashboard():
         'id': session['employee_id']
     }
     forms = Form.get_all_forms_for_emp(data)
+    
     return render_template("dashboard.html",forms=forms)
 
 @app.route("/show/<int:id>")

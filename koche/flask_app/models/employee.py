@@ -34,10 +34,13 @@ class Employee:
         return cls(result[0])
 
     @classmethod
-    def get_by_all(cls,data):
-        query = "SELECT * FROM employees"
-        results = connectToMySQL(DATABASE).query_db(query,data)
-        return cls(results[0])
+    def get_all_emp(cls):
+        query = "SELECT * FROM employees;"
+        results = connectToMySQL(DATABASE).query_db(query)
+        employees = []
+        for employee in results:
+            employees.append(cls(employee))
+        return employees
 
     # @classmethod
     # def update(cls,data):

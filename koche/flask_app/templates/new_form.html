@@ -32,6 +32,7 @@
             <label for="exposure_date">Date of clost contact or positive test:</label>
             <input type="date" id="exposure_date" name="exposure_date">
         </div>
+        <a href="/logout">cancel</a>
     <input type="submit" value="Create">
     </form>
     {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
@@ -41,6 +42,10 @@
         {% endfor %}
     {% endif %}
 {% endwith %}
+
+    {% for employee in employees %}
+        <p> {{employee.last_name}} </p>
+    {% endfor %}
 </body>
 </html>
 </body>
