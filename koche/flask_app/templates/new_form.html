@@ -44,8 +44,12 @@
 {% endwith %}
 
     {% for employee in employees %}
-        <p> {{employee.last_name}} </p>
+        <input type="checkbox" id="emp" name="emp" value={{employee.id}}>
+        <label for="emp"> {{employee.first_name}} {{employee.last_name}}</label><br>
+
     {% endfor %}
+
+    
 </body>
 </html>
 </body>
