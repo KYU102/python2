@@ -17,9 +17,13 @@ class Form:
 
     @classmethod
     def saveForm(cls,data):
-        query = "INSERT INTO forms (close_contact, exposure_date, employee_id) VALUES (%(close_contact)s,%(exposure_date)s, %(employee_id)s);"
+        query = "INSERT INTO forms (close_contact, exposure_date, employee_id, form_id) VALUES (%(close_contact)s,%(exposure_date)s, %(employee_id)s);"
         return connectToMySQL(DATABASE).query_db(query,data)
 
+    @classmethod
+    def saveCloseContacts(cls,data):
+        query = "INSERT INTO emp_covid_contact (first_name, last_name, emp_id) VALUES (%(first_name)s,%(last_name)s, %(emp_id)s,%(form_id)s);"
+        return connectToMySQL(DATABASE).query_db(query,data)
     # @classmethod
     # def get_all_with_employee(cls) -> list:
     #     query = "SELECT employees.first_name, forms.* FROM forms JOIN employees ON employee.id = forms.employee_id;"

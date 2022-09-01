@@ -27,6 +27,7 @@ def create_form():
     Form.saveForm(data)
     # Don't forget to redirect after saving to the database.
     return redirect('/dashboard')
+    
 
 
 @app.route('/dashboard')
