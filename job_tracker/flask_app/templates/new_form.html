@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Covid Contact Form</h1>
+    <a href="/logout">Logout</a>
+    <a href="/dashboard"> Dashboard</a>
+    <form action="/create_form" method = "post" >
+        <div>
+            <label for="close_contact">Close Contact(within 6ft and at least 15 minutes):</label>
+            
+            <select name="close_contact"id="close_contact">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+            </select>
+        </div>
+        <div>
+            <label for="exposure_date">Date of clost contact or positive test:</label>
+            <input type="date" id="exposure_date" name="exposure_date">
+        </div>
+        <a href="/logout">cancel</a>
+    <input type="submit" value="Create">
+    </form>
+    {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+    {% if messages %}                            <!-- check if there are any messages -->
+        {% for message in messages %}            <!-- loop through the messages -->
+            <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+    {% for employee in employees %}
+        <input type="checkbox" id="emp" name="emp" value={{employee.id}}>
+        <label for="emp"> {{employee.first_name}} {{employee.last_name}}</label><br>
+
+    {% endfor %}
+
+    
+</body>
+</html>
+</body>
+</html>
