@@ -1,7 +1,7 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
 
-DATABASE = 'koche_schema'
+DATABASE = 'job_tracker_schema'
 
 class Form:
     def __init__(self,data):
